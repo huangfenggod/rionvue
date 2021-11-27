@@ -15,6 +15,16 @@ export default new Router({
       path:'/manage',
       name: 'manage',
       component:()=>import("../components/manage")
+    },
+    {
+      path: '/query',
+      name: 'query',
+      component:()=>import("../components/queryAddress")
+    },
+    {
+      path: '/team',
+      name:'team',
+      component:()=>import("../components/queryTeam")
     }
   ],
 mode:'history'

@@ -1,5 +1,9 @@
 <template>
 <div>
+
+  <el-button @click="submitQuery">跳转到地址查询</el-button>
+  <el-button @click="submitTeam">跳转团队查询</el-button>
+  <h1>管理界面</h1>
   <el-table
     :data="tableData"
     border
@@ -19,7 +23,12 @@
     <el-table-column
       prop="address"
       label="钱包地址"
-      width="300">
+      width="500">
+    </el-table-column>
+    <el-table-column
+      prop="pid"
+      label="推荐人编号"
+      width="100">
     </el-table-column>
     <el-table-column
       prop="pay"
@@ -62,251 +71,287 @@ export default {
   name: "manage",
   data(){
     return {
-      ispay:[
-        false,false
-      ],
-
 
       tableData:[
         {
         id:'',
         time:'',
         address:'',
-        pay:''
+        pay:'',
+        pid:''
       },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
         {
           id:'',
           time:'',
           address:'',
-          pay:''
+          pay:'',
+          pid:''
         },
 
 
@@ -315,6 +360,12 @@ export default {
     }
   },
 methods:{
+    submitQuery(){
+      this.$router.push('/query')
+    },
+  submitTeam(){
+      this.$router.push('/team')
+  },
   handleClick(row){
     re({url:'/update',method:'post',params:{address:row.address}})
       .then(res=>{
@@ -332,13 +383,14 @@ methods:{
         for (var i=0;i<length ; i++){
           this.tableData[i].id=resData[i].id;
           this.tableData[i].address=resData[i].address;
+          this.tableData[i].pid=resData[i].pid;
           if (resData[i].pay==0){
             this.tableData[i].pay = '否'
           }else {
             this.tableData[i].pay ='是'
           }
           if(resData[i].time!=null){
-            this.tableData[i].time=resData[i].time.replace('T',' ').replace('000+00:00','')
+            this.tableData[i].time=resData[i].time.replace('T',' ').replace('000+00:00','').replace('.','')
           }
         }
 
@@ -362,13 +414,14 @@ methods:{
        for (var i=0;i<length ; i++){
          this.tableData[i].id=resData[i].id;
          this.tableData[i].address=resData[i].address;
+         this.tableData[i].pid=resData[i].pid;
          if (resData[i].pay==0){
            this.tableData[i].pay = '否'
          }else {
            this.tableData[i].pay ='是'
          }
   if(resData[i].time!=null){
-      this.tableData[i].time=resData[i].time.replace('T',' ').replace('000+00:00','')
+      this.tableData[i].time=resData[i].time.replace('T',' ').replace('000+00:00','').replace('.','')
   }
        }
 
